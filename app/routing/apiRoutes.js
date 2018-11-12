@@ -10,4 +10,4 @@ app.use(express.json());
 //Routes for application data
 app.get('/api/friends', (req, res) => res.json(friends));
 
-app.post('/api/friends', (req, res) => console.log(data));
+app.post('/api/friends', (req, res) => console.log(req.body.nameInput, req.body.question1));
