@@ -1,6 +1,6 @@
-//exports friends array
+//export starter data for application
 
-var friends = module.exports = [
+var dataArray = [
     {
         "name":"Ahmed",
         "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
@@ -15,6 +15,8 @@ var friends = module.exports = [
             5,
             4,
             1
-            ]
+        ]
     }
 ];
+
+module.exports = dataArray;
