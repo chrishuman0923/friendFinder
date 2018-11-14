@@ -142,11 +142,9 @@
                     </select>
                 </div>
                 <hr class="my-4">
-                <a href="#">
-                    <button class="btn btn-primary btn-lg" id="submitBtn">
+                <button class="btn btn-primary btn-lg" id="submitBtn">
                         <span class="glyphicon glyphicon-ok-sign"></span> Submit
-                    </button>
-                </a>
+                </button>
             </form>
             <hr class="my-4">
             <footer>
@@ -179,7 +177,7 @@
 
                     //Loop through questions and add score to scores array in object
                     $('select').each(function() {
-                        newEntry.scores.push(parseInt($(this).val()));
+                        newEntry.scores.push($(this).val());
                     });
 
                     submitData(newEntry);
@@ -188,8 +186,9 @@
 
             //Submit data via ajax post
             function submitData(entry) {
-                console.log(entry);
                 $.post('/api/friends', entry, function(data) {
+                    $('input').val('');
+                    $('select').val('');
                     console.log(data);
                 });
             }

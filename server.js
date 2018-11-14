@@ -9,6 +9,11 @@ const express = require('express'),
         ...require(path.join(__dirname,'app','routing','apiRoutes'))
     ];
 
+//enable express middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 //Import routes from files
 for(const route of routes) {
     var method = route.method.toLowerCase();
@@ -20,10 +25,6 @@ for(const route of routes) {
         throw new Error('Method passed from route file not valid.');
     }
 }
-
-//enable express middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 //Log message confirming listening of server
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
