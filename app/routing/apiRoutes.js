@@ -7,20 +7,11 @@ function allFriends(req, res) {
 }
 
 function addFriend(req, res) {
-    //Get submitted data and create a new object
-    var postData = Object.values(req.body),
-    input = {
-        name: postData[0].trim(),
-        photo: postData[1].trim(),
-        scores: []
-    };
+    //Submit data to local variable
+    friendsData.push(req);
 
-    //Add scores to new object
-    for (var i = 2; i < postData.length; i ++) {
-        input.scores.push(parseInt(postData[i]));
-    }
-
-    friendsData.push(input);
+    //Send response code to complete 'handshake' with client
+    res.status(200).end();
 }
 
 module.exports = [

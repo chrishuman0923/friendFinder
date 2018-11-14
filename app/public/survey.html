@@ -18,7 +18,7 @@
             <h2>
                 About You
             </h2>
-            <form onclick="validateForm()">
+            <form>
                 <div class="form-group">
                     <label for="name" required="true">Name (Required)</label>
                     <input type="text" class="form-control" id="name">
@@ -150,9 +150,9 @@
             </form>
             <hr class="my-4">
             <footer>
-                <a href="api/friends">API Friends List</a>
+                <a href="api/friends" target="_blank">API Friends List</a>
                  | 
-                <a href="https://github.com/chrishuman0923/friendFinder">GitHub Repo</a>
+                <a href="https://github.com/chrishuman0923/friendFinder" target="_blank">GitHub Repo</a>
             </footer>
         </div>
         <!-- JQuery CDN -->
@@ -163,22 +163,39 @@
             function validateForm() {
                 event.preventDefault();
 
-                if ($('#name').value() === '') {
+                if ($('#name').val().trim() === '') {
                     alert('Enter a name');
+                } else if ($('#photo').val().trim() === '') {
+                    alert('Enter a path to a photo.');
+                } else if ($('select').val() === 'Select an option') {
+                    alert('Complete all questions.');
                 } else {
+                    //Add form data to new object
                     var newEntry = {
-                        name: $('#name').value()
+                        name: $('#name').val().trim(),
+                        photo: $('#photo').val().trim(),
+                        scores: []
                     };
+
+                    //Loop through questions and add score to scores array in object
+                    $('select').each(function() {
+                        newEntry.scores.push(parseInt($(this).val()));
+                    });
 
                     submitData(newEntry);
                 }
             }
 
+            //Submit data via ajax post
             function submitData(entry) {
+                console.log(entry);
                 $.post('/api/friends', entry, function(data) {
                     console.log(data);
                 });
             }
+
+            //Add click handler
+            $('#submitBtn').on('click', validateForm);
         </script>
     </body>
 </html>
