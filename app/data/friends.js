@@ -3,7 +3,7 @@
 var dataArray = [
     {
         "name":"Ahmed",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"https://www.birmingham.ac.uk/Images/Staff/profiles/cem/Ahmed,Zubair.jpg",
         "scores":[
             5,
             1,
