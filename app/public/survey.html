@@ -219,7 +219,7 @@
                     
                     //Update modal
                     $('#matchName').html(data.name);
-                    $('#matchPhoto').src('src', data.photo);
+                    $('#matchPhoto').attr('src', data.photo);
 
                     //Keeps modal from displaying and then the image changing
                     setTimeout($('#exampleModal').modal('show'), 2000);
