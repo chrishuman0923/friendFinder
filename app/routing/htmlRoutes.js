@@ -1,13 +1,25 @@
-//define constants of the application
+//create dependency
 const path = require('path');
 
-//Routes for application html pages
-module.exports = function(app) {
-    app.get('/', (req, res) => res.sendFile(
-        path.join(__dirname, '..', 'public', 'home.html')
-    ));
-    
-    app.get('/survey', (req, res) => res.sendFile(
-        path.join(__dirname, '..', 'public', 'survey.html')
-    ));
-};
+//Route to main html page
+function displayRoot(req, res) {
+    res.sendFile(path.join(__dirname, '..', 'public', 'home.html'));
+}
+
+//Route to survey html page
+function displaySurvey(req, res) {
+    res.sendFile(path.join(__dirname, '..', 'public', 'survey.html'));
+}
+
+module.exports = [
+    {
+        url: '/',
+        method: 'GET',
+        handler: displayRoot
+    },
+    {
+        url: '/survey',
+        method: 'GET',
+        handler: displaySurvey
+    }
+];

@@ -2,11 +2,24 @@
 const express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
-    path = require('path');
+    path = require('path'),
+    //create array of array's containing route data
+    routes = [
+        ...require(path.join(__dirname,'app','routing','htmlRoutes')),
+        ...require(path.join(__dirname,'app','routing','apiRoutes'))
+    ];
 
-//Import route options from files
-require(path.join(__dirname,'app','routing','htmlRoutes'))(app);
-require(path.join(__dirname,'app','routing','apiRoutes'))(app);
+//Import routes from files
+for(const route of routes) {
+    var method = route.method.toLowerCase();
+
+    //Check for valid method
+    if (typeof app[method] === 'function') {
+        app[method](route.url, route.handler);
+    } else {
+        throw new Error('Method passed from route file not valid.');
+    }
+}
 
 //enable express middleware
 app.use(express.urlencoded({ extended: true }));
