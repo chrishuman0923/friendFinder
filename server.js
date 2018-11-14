@@ -1,11 +1,12 @@
 //define constants of the application
 const express = require('express'),
     app = express(),
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || 3000,
+    path = require('path');
 
-//Import routes from route files
-require('./app/routing/htmlRoutes')(app);
-require('./app/routing/apiRoutes')(app);
+//Import route options from files
+require(path.join(__dirname,'app','routing','htmlRoutes'))(app);
+require(path.join(__dirname,'app','routing','apiRoutes'))(app);
 
 //enable express middleware
 app.use(express.urlencoded({ extended: true }));
