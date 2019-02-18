@@ -23,3 +23,5 @@ The front-end is made up of 2 html files that get served by the back-end server 
 - URL Routing
 
 ## Future Enhancements
+- Improve backend logic to not match you to the same user twice or to yourself if you submit the survey more than once
+- Only show one survey question at a time to prevent having to scroll all the way through the questions.
