@@ -11,6 +11,10 @@ The front-end is made up of 2 html files that get served by the back-end server 
 
 ## Getting Started
 
+1. Fill out the survey
+2. View Match
+3. View all submissions
+
 ## Technologies Used
 - HTML 5
 - CSS 3
